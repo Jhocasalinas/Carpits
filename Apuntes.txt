@@ -1,0 +1,12 @@
+Ingreso de Cliente
+Agendamiento
+
+
+
+
+Login de usuario y roles
+
+Si se va a agendar otro indique que ya se agendo la fecha y hora y quien
+
+Informe de ingreso de placas y quien lo agendo
+
