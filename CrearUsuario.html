@@ -10,6 +10,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <link href="css/Estilo.css" rel="stylesheet" type="text/css" />
+    <script src="js/Program.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
@@ -183,48 +184,6 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-                function mostrarPassword() {
-                    var cambio = document.getElementById("txtPassword");
-                    if (cambio.type == "password") {
-                        cambio.type = "text";
-                        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio.type = "password";
-                        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-                function mostrarPassword2() {
-                    var cambio2 = document.getElementById("txtconfirmPassword");
-                    if (cambio2.type == "password") {
-                        cambio2.type = "text";
-                        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio2.type = "password";
-                        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-
-                $(document).ready(
-                    function () {
-                        $('#ShowPassword').click(
-                            function () {
-                                $('#Password').attr(
-                                    'type',
-                                    $(this).is(':checked') ? 'text'
-                                        : 'password');
-                            });
-                    }),
-                    function () {
-                        $('#ShowPassword2').click(
-                            function () {
-                                $('#Password').attr(
-                                    'type',
-                                    $(this).is(':checked') ? 'text'
-                                        : 'password');
-                            });
-                    };
-            </script>
 </body>
 
 </html>
