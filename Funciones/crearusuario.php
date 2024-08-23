@@ -20,14 +20,10 @@ echo $_POST['T_documento'];
     if ($password !== $confirm_password) {
         die("Las contraseñas no coinciden.");
     }
-    
-    // Preparar y ejecutar la consulta SQL
+    $Contaseña_segura = password_hash($password, PASSWORD_DEFAULT);
 
-   /* $sql1 = "INSERT INTO funcionario (TIPCODUMENTO, NUMDOC, PRIMNOM, SEGNOM, PRIAPEL, SEGAPEL, NUMTELEF) 
-            VALUES ('$tipo_documento', '$numero_documento', '$primer_nombre', '$segundo_nombre', '$primer_apellido', '$segundo_apellido', '$telefono')";*/
-    
     $sql1 = "INSERT INTO usuario (CARGO, USUROL, CORREO, USURNAME, CONTRASEÑA, TIPCODUMENTO, NUMDOC, PRIMNOM, SEGNOM, PRIAPEL, SEGAPEL, NUMTELEF) 
-            VALUES ('$cargo', '$roles', '$correo', '$nombre_usuario', '$password', '$tipo_documento', '$numero_documento', '$primer_nombre', '$segundo_nombre', '$primer_apellido', '$segundo_apellido', '$telefono')";
+            VALUES ('$cargo', '$roles', '$correo', '$nombre_usuario', '$Contaseña_segura', '$tipo_documento', '$numero_documento', '$primer_nombre', '$segundo_nombre', '$primer_apellido', '$segundo_apellido', '$telefono')";
     
     if ($conn->query($sql1) === TRUE) {
         echo "Nuevo registro creado exitosamente";

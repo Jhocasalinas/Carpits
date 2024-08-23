@@ -29,8 +29,27 @@ function mostrarPassword2() {
         $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
     }
 }
+function mostrarPasswordL() {
+    var cambio2 = document.getElementById("txtconfirmPassword");
+    if (cambio2.type == "password") {
+        cambio2.type = "text";
+        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+    } else {
+        cambio2.type = "password";
+        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+    }
+}
 
 $(document).ready(
+    function () {
+        $('#ShowPasswordL').click(
+            function () {
+                $('#Password').attr(
+                    'type',
+                    $(this).is(':checked') ? 'text'
+                        : 'password');
+            });
+    },
     function () {
         $('#ShowPassword').click(
             function () {
