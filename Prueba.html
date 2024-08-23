@@ -1,26 +1,438 @@
-<div class="card mb-3" style="max-width: 540px;" >
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img
-                src="Image Source"
-                class="img-fluid rounded-start"
-                alt="Card title"
-            />
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    This is a wider card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                </p>
-                <p class="card-text">
-                    <small class="text-muted"
-                        >Last updated 3 mins ago</small
-                    >
-                </p>
+<html lang="es" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Hola mundo</title>
+   
+  
+   
+   <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   
+   <!-- Los iconos tipo Solid de Fontawesome-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+   <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+   
+   <!-- Nuestro css-->
+   <link rel="stylesheet" type="text/css" href="/cassaudec/css/Form-Usuario.css">
+   
+   <!-- DATA TABLE -->
+   <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function() {
+         //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
+         $('#userList').DataTable();
+      });
+   </script>
+   
+   
+   </head>
+   <body>
+      <div class="contenedor">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="/cassaudec/img/Logoudec.png" width="150" alt="">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-        </div>
-    </div>
-</div>
+            <div class="collapse navbar-collapse" id="navbarText">
+               <ul class="nav navbar-nav">
+                  <li><a class="navbar-brand">CASSA
+                        UDEC</a></li>
+               </ul>
+            </div>
+            <ul class="nav nav-tabs justify-content-end">
+               <li class="nav-item"><a class="nav-link" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Lista
+                     de usuarios</a></li>
+               <li class="nav-item"><a class="nav-link active show" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Formulario
+                     de registro de usuarios</a></li>
+               <li class="nav-item"><a class="nav-link" href="/cassaudec/logout"><span>ADMIN</span>
+                     - <span>Cerrar Sesion </span><span class="float-right"><svg class="svg-inline--fa fa-sign-out-alt fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="sign-out-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z"></path></svg><!-- <i class="fas fa-sign-out-alt"></i> --></span> </a></li>
+            </ul>
+         </nav>
+      </div>
+      <div class="container-fluid">
+         <div class="row flex-nowrap">
+            <div class="col-auto col-md-2 col-xl-2 px-sm-0 px-0 bg-light">
+               <div class="flex-column align-items-center px-0 pt-0 text-white ">
+                  <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                     <li class="nav-item "><a href="/cassaudec/FormUsuario" class="d-block text-success p-3 border-0 "> <i class="icon ion-md-home mr-2"></i> <span class="ms-1 d-none d-sm-inline">Inicio</span>
+                     </a></li>
+                     <li><a href="/cassaudec/RPacientes" class="d-block text-success p-3 border-0"> <i class="icon ion-md-person mr-2"></i> <span class="ms-1 d-none d-sm-inline">Valoracion Pacientes</span>
+                     </a></li>
+                     <li><a href="/cassaudec/ListarPacientes" class="d-block text-success p-3 border-0"> <i class="icon ion-md-list mr-2"></i> <span class="ms-1 d-none d-sm-inline">Lista de Pacientes</span>
+                     </a></li>
+                     <li><a href="/cassaudec/Admin/Cartillas" class="d-block text-success p-3 border-0"> <i class="icon ion-md-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Crear Cartillas</span>
+                     </a></li>
+                     <li><a href="/cassaudec/Admin/Eventos" class="d-block text-success p-3 border-0"> <i class="icon ion-md-calendar mr-2"></i> <span class="ms-1 d-none d-sm-inline">Eventos</span>
+                     </a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="col-sm-8 row mx-auto">
+               <div class="mx-auto col-sm-12 main-section" id="myTab" role="tablist">
+                  
+                  <div class="tab-content" id="myTabContent">
+   
+                     <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                        <div class="card">
+                           <div class="card-header">
+                              <h4>Lista de Usuarios</h4>
+                           </div>
+                           <div class="card-body">
+                              <div class="table-responsive">
+      <div id="userList_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="userList_length"><label>Show <select name="userList_length" aria-controls="userList" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="userList_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="userList"></label></div><table id="userList" class="table table-bordered table-hover table-striped dataTable no-footer" aria-describedby="userList_info">
+         <thead class="thead-light">
+            <tr><th scope="col" class="sorting sorting_asc" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending" style="width: 9.48438px;">#</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Nombre: activate to sort column ascending" style="width: 80.0469px;">Nombre</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Apellido: activate to sort column ascending" style="width: 105.016px;">Apellido</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Usuario: activate to sort column ascending" style="width: 57.6562px;">Usuario</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Pais: activate to sort column ascending" style="width: 62.7031px;">Pais</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Ciudad: activate to sort column ascending" style="width: 62.7031px;">Ciudad</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 249.703px;">Email</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Rol: activate to sort column ascending" style="width: 180.984px;">Rol</th><th scope="col" class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1" aria-label="Acciones: activate to sort column ascending" style="width: 66.3125px;">Acciones</th></tr>
+         </thead>
+         <tbody>
+            
+            
+            
+            
+            
+         <tr class="odd">
+               <td class="sorting_1">1</td>
+               <td>ADMIN</td>
+               <td>ADMIN</td>
+               <td>ADMIN</td>
+               <td>COLOMBIA</td>
+               <td>COLOMBIA</td>
+               <td>NO@NO.NO</td>
+               <td>[Rol [id=1, nombre=ADMIN, descripcion=ROLE_ADMIN]]</td>
+               <td>
+                  <span>
+                     <a href="/cassaudec/editarUsuario/1"><svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> --></a>
+                  </span>
+                  <span>
+                  | <a href="#" onclick="javascript:confirmDelete('1');"><svg class="svg-inline--fa fa-user-times fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="user-times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M224 32c77.32 0 140 62.68 140 140s-62.68 140-140 140S84 249.32 84 172 146.68 32 224 32zm160.373 292.093l-62.399-15.6c-65.557 47.154-145.021 36.631-195.948 0l-62.399 15.6C26.233 333.442 0 367.04 0 405.585V438c0 23.196 18.804 42 42 42h364c23.196 0 42-18.804 42-42v-32.415c0-38.545-26.233-72.143-63.627-81.492zM587.897 256l48.596-48.598c4.675-4.675 4.675-12.256 0-16.931l-26.964-26.964c-4.675-4.675-12.256-4.675-16.931 0L544 212.105l-48.598-48.598c-4.675-4.675-12.256-4.675-16.931 0l-26.964 26.964c-4.675 4.675-4.675 12.256 0 16.931L500.103 256l-48.596 48.598c-4.675 4.675-4.675 12.256 0 16.931l26.964 26.964c4.675 4.675 12.256 4.675 16.931 0L544 299.897l48.598 48.596c4.675 4.675 12.256 4.675 16.931 0l26.964-26.964c4.675-4.675 4.675-12.256 0-16.931L587.897 256z"></path></svg><!-- <i class="fas fa-user-times"></i> --></a>
+                  </span>
+               </td>
+               
+            </tr><tr class="even">
+               <td class="sorting_1">3</td>
+               <td>Daniel Felipe</td>
+               <td>Rodriguez</td>
+               <td>Prueba</td>
+               <td>Colombia</td>
+               <td>Bogota</td>
+               <td>Danielfmarin16@gmail.com</td>
+               <td>[Rol [id=2, nombre=USER, descripcion=ROLE_USER]]</td>
+               <td>
+                  <span>
+                     <a href="/cassaudec/editarUsuario/3"><svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> --></a>
+                  </span>
+                  <span>
+                  | <a href="#" onclick="javascript:confirmDelete('3');"><svg class="svg-inline--fa fa-user-times fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="user-times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M224 32c77.32 0 140 62.68 140 140s-62.68 140-140 140S84 249.32 84 172 146.68 32 224 32zm160.373 292.093l-62.399-15.6c-65.557 47.154-145.021 36.631-195.948 0l-62.399 15.6C26.233 333.442 0 367.04 0 405.585V438c0 23.196 18.804 42 42 42h364c23.196 0 42-18.804 42-42v-32.415c0-38.545-26.233-72.143-63.627-81.492zM587.897 256l48.596-48.598c4.675-4.675 4.675-12.256 0-16.931l-26.964-26.964c-4.675-4.675-12.256-4.675-16.931 0L544 212.105l-48.598-48.598c-4.675-4.675-12.256-4.675-16.931 0l-26.964 26.964c-4.675 4.675-4.675 12.256 0 16.931L500.103 256l-48.596 48.598c-4.675 4.675-4.675 12.256 0 16.931l26.964 26.964c4.675 4.675 12.256 4.675 16.931 0L544 299.897l48.598 48.596c4.675 4.675 12.256 4.675 16.931 0l26.964-26.964c4.675-4.675 4.675-12.256 0-16.931L587.897 256z"></path></svg><!-- <i class="fas fa-user-times"></i> --></a>
+                  </span>
+               </td>
+               
+            </tr><tr class="odd">
+               <td class="sorting_1">22</td>
+               <td>Adriana</td>
+               <td>Hernandez</td>
+               <td>ADRI</td>
+               <td>colombia</td>
+               <td>Flandes</td>
+               <td>ahernandezb@ucundinamarca.edu.co</td>
+               <td>[Rol [id=2, nombre=USER, descripcion=ROLE_USER]]</td>
+               <td>
+                  <span>
+                     <a href="/cassaudec/editarUsuario/22"><svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> --></a>
+                  </span>
+                  <span>
+                  | <a href="#" onclick="javascript:confirmDelete('22');"><svg class="svg-inline--fa fa-user-times fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="user-times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M224 32c77.32 0 140 62.68 140 140s-62.68 140-140 140S84 249.32 84 172 146.68 32 224 32zm160.373 292.093l-62.399-15.6c-65.557 47.154-145.021 36.631-195.948 0l-62.399 15.6C26.233 333.442 0 367.04 0 405.585V438c0 23.196 18.804 42 42 42h364c23.196 0 42-18.804 42-42v-32.415c0-38.545-26.233-72.143-63.627-81.492zM587.897 256l48.596-48.598c4.675-4.675 4.675-12.256 0-16.931l-26.964-26.964c-4.675-4.675-12.256-4.675-16.931 0L544 212.105l-48.598-48.598c-4.675-4.675-12.256-4.675-16.931 0l-26.964 26.964c-4.675 4.675-4.675 12.256 0 16.931L500.103 256l-48.596 48.598c-4.675 4.675-4.675 12.256 0 16.931l26.964 26.964c4.675 4.675 12.256 4.675 16.931 0L544 299.897l48.598 48.596c4.675 4.675 12.256 4.675 16.931 0l26.964-26.964c4.675-4.675 4.675-12.256 0-16.931L587.897 256z"></path></svg><!-- <i class="fas fa-user-times"></i> --></a>
+                  </span>
+               </td>
+               
+            </tr><tr class="even">
+               <td class="sorting_1">23</td>
+               <td>UsuarioName</td>
+               <td>UsuarioLastname</td>
+               <td>UsuarioN</td>
+               <td>Colombia</td>
+               <td>Girardot</td>
+               <td>UsuarioN@ucundinamarca.edu.co</td>
+               <td>[Rol [id=2, nombre=USER, descripcion=ROLE_USER]]</td>
+               <td>
+                  <span>
+                     <a href="/cassaudec/editarUsuario/23"><svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> --></a>
+                  </span>
+                  <span>
+                  | <a href="#" onclick="javascript:confirmDelete('23');"><svg class="svg-inline--fa fa-user-times fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="user-times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M224 32c77.32 0 140 62.68 140 140s-62.68 140-140 140S84 249.32 84 172 146.68 32 224 32zm160.373 292.093l-62.399-15.6c-65.557 47.154-145.021 36.631-195.948 0l-62.399 15.6C26.233 333.442 0 367.04 0 405.585V438c0 23.196 18.804 42 42 42h364c23.196 0 42-18.804 42-42v-32.415c0-38.545-26.233-72.143-63.627-81.492zM587.897 256l48.596-48.598c4.675-4.675 4.675-12.256 0-16.931l-26.964-26.964c-4.675-4.675-12.256-4.675-16.931 0L544 212.105l-48.598-48.598c-4.675-4.675-12.256-4.675-16.931 0l-26.964 26.964c-4.675 4.675-4.675 12.256 0 16.931L500.103 256l-48.596 48.598c-4.675 4.675-4.675 12.256 0 16.931l26.964 26.964c4.675 4.675 12.256 4.675 16.931 0L544 299.897l48.598 48.596c4.675 4.675 12.256 4.675 16.931 0l26.964-26.964c4.675-4.675 4.675-12.256 0-16.931L587.897 256z"></path></svg><!-- <i class="fas fa-user-times"></i> --></a>
+                  </span>
+               </td>
+               
+            </tr><tr class="odd">
+               <td class="sorting_1">41</td>
+               <td>MARÍA</td>
+               <td>MARTÍNEZ</td>
+               <td>Maria</td>
+               <td>Colombia</td>
+               <td>GIRARDOT</td>
+               <td>vicky.rojas.mv@gmail.com</td>
+               <td>[Rol [id=2, nombre=USER, descripcion=ROLE_USER]]</td>
+               <td>
+                  <span>
+                     <a href="/cassaudec/editarUsuario/41"><svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> --></a>
+                  </span>
+                  <span>
+                  | <a href="#" onclick="javascript:confirmDelete('41');"><svg class="svg-inline--fa fa-user-times fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="user-times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M224 32c77.32 0 140 62.68 140 140s-62.68 140-140 140S84 249.32 84 172 146.68 32 224 32zm160.373 292.093l-62.399-15.6c-65.557 47.154-145.021 36.631-195.948 0l-62.399 15.6C26.233 333.442 0 367.04 0 405.585V438c0 23.196 18.804 42 42 42h364c23.196 0 42-18.804 42-42v-32.415c0-38.545-26.233-72.143-63.627-81.492zM587.897 256l48.596-48.598c4.675-4.675 4.675-12.256 0-16.931l-26.964-26.964c-4.675-4.675-12.256-4.675-16.931 0L544 212.105l-48.598-48.598c-4.675-4.675-12.256-4.675-16.931 0l-26.964 26.964c-4.675 4.675-4.675 12.256 0 16.931L500.103 256l-48.596 48.598c-4.675 4.675-4.675 12.256 0 16.931l26.964 26.964c4.675 4.675 12.256 4.675 16.931 0L544 299.897l48.598 48.596c4.675 4.675 12.256 4.675 16.931 0l26.964-26.964c4.675-4.675 4.675-12.256 0-16.931L587.897 256z"></path></svg><!-- <i class="fas fa-user-times"></i> --></a>
+                  </span>
+               </td>
+               
+            </tr></tbody>
+      </table><div class="dataTables_info" id="userList_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div><div class="dataTables_paginate paging_simple_numbers" id="userList_paginate"><a class="paginate_button previous disabled" aria-controls="userList" data-dt-idx="0" tabindex="-1" id="userList_previous">Previous</a><span><a class="paginate_button current" aria-controls="userList" data-dt-idx="1" tabindex="0">1</a></span><a class="paginate_button next disabled" aria-controls="userList" data-dt-idx="2" tabindex="-1" id="userList_next">Next</a></div></div>
+      
+   </div>
+   
+   <script type="text/javascript">
+   function confirmDelete(id){
+      $('#deleteModal').modal('show');
+      $("#userIdHiddenInput").val(id);
+   }
+   
+   function deleteUser(){
+      var id = $("#userIdHiddenInput").val();
+       window.location = "BorrarUsuario/"+id;
+       
+   }
+   </script>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="tab-pane fade active show" id="form" role="tabpanel" aria-labelledby="form-tab">
+                        <div class="card-header">
+                           <h4>Informacion del usuario</h4>
+                        </div>
+                        <div class="card-body">
+                           <div>
+   
+      <form class="form" role="form" autocomplete="off" action="/cassaudec/FormUsuario" method="post">
+          
+   
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Nombre:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="text" id="nombre" name="nombre" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Apellidos:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="text" id="apellido" name="apellido" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Usuario:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="text" id="username" name="username" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Email:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="email" id="email" name="email" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Pais:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="text" id="Pais" name="Pais" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Ciudad:</label>
+            <div class="col-lg-9">
+               <input class="form-control" type="text" id="ciudad" name="ciudad" value="">
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Roles</label>
+            <div class="col-lg-9">
+               <select class="form-control" size="2" id="roles" name="roles">
+                  <option value="1">ADMIN</option>
+                  <option value="2">USER</option>
+                  <option value="3">INACTIVO</option>
+               </select>
+               
+            </div>
+         </div>
+         <div class="form-group row">
+            <p>Click en el ojo para mostrar / ocultar</p>
+            <label class="col-lg-3 col-form-label form-control-label">Ingrese
+               Contraseña</label>
+            <div class="input-group">
+               <input id="txtPassword" class="form-control" type="password" name="password" value="">
+               
+               <div class="input-group-append">
+                  <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
+                     <svg class="svg-inline--fa fa-eye-slash fa-w-18 icon" aria-hidden="true" data-prefix="fa" data-icon="eye-slash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M286.693 391.984l32.579 46.542A333.958 333.958 0 0 1 288 440C168.19 440 63.031 376.051 6.646 280.369a47.999 47.999 0 0 1 0-48.739c24.023-40.766 56.913-75.775 96.024-102.537l57.077 81.539C154.736 224.82 152 240.087 152 256c0 74.736 60.135 135.282 134.693 135.984zm282.661-111.615c-31.667 53.737-78.747 97.46-135.175 125.475l.011.015 41.47 59.2c7.6 10.86 4.96 25.82-5.9 33.42l-13.11 9.18c-10.86 7.6-25.82 4.96-33.42-5.9L100.34 46.94c-7.6-10.86-4.96-25.82 5.9-33.42l13.11-9.18c10.86-7.6 25.82-4.96 33.42 5.9l51.038 72.617C230.68 75.776 258.905 72 288 72c119.81 0 224.969 63.949 281.354 159.631a48.002 48.002 0 0 1 0 48.738zM424 256c0-75.174-60.838-136-136-136-17.939 0-35.056 3.473-50.729 9.772l19.299 27.058c25.869-8.171 55.044-6.163 80.4 7.41h-.03c-23.65 0-42.82 19.17-42.82 42.82 0 23.626 19.147 42.82 42.82 42.82 23.65 0 42.82-19.17 42.82-42.82v-.03c18.462 34.49 16.312 77.914-8.25 110.95v.01l19.314 27.061C411.496 321.2 424 290.074 424 256zM262.014 356.727l-77.53-110.757c-5.014 52.387 29.314 98.354 77.53 110.757z"></path></svg><!-- <span class="fa fa-eye-slash icon"></span> -->
+                  </button>
+               </div>
+   
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Confirmar
+               contraseña:</label>
+            <div class="input-group">
+               <input id="txtconfirmPassword" class="form-control" type="password" name="confirmPassword" value="">
+               
+               <div class="input-group-append">
+                  <button id="show_password2" class="btn btn-primary" type="button" onclick="mostrarPassword2()">
+                     <svg class="svg-inline--fa fa-eye-slash fa-w-18 icon" aria-hidden="true" data-prefix="fa" data-icon="eye-slash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M286.693 391.984l32.579 46.542A333.958 333.958 0 0 1 288 440C168.19 440 63.031 376.051 6.646 280.369a47.999 47.999 0 0 1 0-48.739c24.023-40.766 56.913-75.775 96.024-102.537l57.077 81.539C154.736 224.82 152 240.087 152 256c0 74.736 60.135 135.282 134.693 135.984zm282.661-111.615c-31.667 53.737-78.747 97.46-135.175 125.475l.011.015 41.47 59.2c7.6 10.86 4.96 25.82-5.9 33.42l-13.11 9.18c-10.86 7.6-25.82 4.96-33.42-5.9L100.34 46.94c-7.6-10.86-4.96-25.82 5.9-33.42l13.11-9.18c10.86-7.6 25.82-4.96 33.42 5.9l51.038 72.617C230.68 75.776 258.905 72 288 72c119.81 0 224.969 63.949 281.354 159.631a48.002 48.002 0 0 1 0 48.738zM424 256c0-75.174-60.838-136-136-136-17.939 0-35.056 3.473-50.729 9.772l19.299 27.058c25.869-8.171 55.044-6.163 80.4 7.41h-.03c-23.65 0-42.82 19.17-42.82 42.82 0 23.626 19.147 42.82 42.82 42.82 23.65 0 42.82-19.17 42.82-42.82v-.03c18.462 34.49 16.312 77.914-8.25 110.95v.01l19.314 27.061C411.496 321.2 424 290.074 424 256zM262.014 356.727l-77.53-110.757c-5.014 52.387 29.314 98.354 77.53 110.757z"></path></svg><!-- <span class="fa fa-eye-slash icon"></span> -->
+                  </button>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 mt-3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Aviso de Privacidad</button>
+   
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Aviso de
+                           Privacidad</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <p>La Universidad de Cundinamarca, de conformidad con lo
+                           dispuesto en la Ley 1581 de 2012 y su Decreto Reglamentario 1074
+                           de 2015, comunica que, en desarrollo de sus actividades
+                           académicas, comerciales o laborales, solicita y recolecta
+                           Información y datos personales de los Titulares que de manera
+                           permanente o temporal acceden o buscan acceder a los servicios
+                           prestados por la Institución, y que serán tratados según las
+                           finalidades descritas en el documento ESG-SSI-M001 - MANUAL DE
+                           POLÍTICAS DE SEGURIDAD Y PRIVACIDAD DE LA INFORMACIÓN.
+                        </p><p>
+                           Dicha información reposa en nuestras bases de datos y sobre la
+                           misma puede ejercer sus derechos de acceso, actualización,
+                           rectificación y supresión de conformidad con nuestra Política
+                           Institucional de Tratamiento de Datos Personales disponible
+                           aquí: <a href="https://www.ucundinamarca.edu.co/index.php/proteccion-de-datos-personales" style="color: #007b3e">www.ucundinamarca.edu.co/index.php/proteccion-de-datos-personales.</a>
+                        </p><p>
+                           El tratamiento de datos de menores responde y respeta el interés
+                           superior de estos, así como asegura el respeto por sus derechos
+                           fundamentales. Igualmente, la Universidad de Cundinamarca
+                           informa que el tratamiento de los datos sensibles registrados en
+                           el instrumento en mención, se realizará bajo estrictos
+                           estándares de seguridad y confidencialidad, implementando
+                           medidas administrativas, técnicas y jurídicas, de obligatorio
+                           cumplimiento para los funcionarios administrativos, docentes y
+                           terceros involucrados en la actividad, considerando en todo
+                           momento que el Titular tiene la libre facultad de no autorizar
+                           el tratamiento de sus datos sensibles. Para ejercer sus derechos
+                           ante el responsable del tratamiento de la información personal,
+                           es decir, la Universidad de Cundinamarca, puede dirigirse a sus
+                           instalaciones a la Oficina de Atención al Ciudadano o
+                           comunicarse con nosotros a través del correo <strong style="color: #007b3e">protecciondedatos@ucundinamarca.edu.co</strong>
+                     </p></div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <input type="checkbox" name="avisoPrivacidad" class="form-check-input" onchange="cambiarCondiciones()" id="avisoPrivacidad" value="true"><input type="hidden" name="_avisoPrivacidad" value="on">
+         </div>
+         <div class="form-group row">
+            <div class="col-lg-12 text-center">
+               <a class="btn btn-secondary" href="/cassaudec/FormUsuario/cancel">Cancelar</a>
+               
+               <input type="submit" class="btn btn-success" id="enviar" value="Registrarse" disabled="">
+            </div>
+         </div>
+         
+         
+      </form>
+   </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle">Desea borrar el usuario?</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">X</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           Estas seguro que quieres eliminar el usuario?
+           <input type="hidden" id="userIdHiddenInput" name="userIdHiddenInput">
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+           <button type="button" class="btn btn-primary" onclick="deleteUser()">Borrar Usuario</button>
+         </div>
+       </div>
+     </div>
+   </div>
+         </div>
+      </div>
+      <script type="text/javascript">
+         function mostrarPassword() {
+            var cambio = document.getElementById("txtPassword");
+            if (cambio.type == "password") {
+               cambio.type = "text";
+               $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            } else {
+               cambio.type = "password";
+               $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+         }
+         function mostrarPassword2() {
+            var cambio2 = document.getElementById("txtconfirmPassword");
+            if (cambio2.type == "password") {
+               cambio2.type = "text";
+               $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            } else {
+               cambio2.type = "password";
+               $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+         }
+   
+         $(document).ready(
+               function() {
+                  //CheckBox mostrar contraseña
+                  $('#ShowPassword').click(
+                        function() {
+                           $('#Password').attr(
+                                 'type',
+                                 $(this).is(':checked') ? 'text'
+                                       : 'password');
+                        });
+               }),
+               function() {
+                  //CheckBox mostrar contraseña
+                  $('#ShowPassword2').click(
+                        function() {
+                           $('#Password').attr(
+                                 'type',
+                                 $(this).is(':checked') ? 'text'
+                                       : 'password');
+                        });
+               };
+      </script>
+      <script src="/cassaudec/js/RPacientes.js"></script>
+      <!-- Código de instalación Cliengo para Danielfmarin16@gmail.com -->
+      
+   
+   </body></html>
