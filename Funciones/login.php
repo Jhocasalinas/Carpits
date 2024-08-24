@@ -14,7 +14,7 @@ function login($usuario, $password, $con)
         if (password_verify($password, $row['CONTRASEÑA'])) {
             // Si las contraseñas coinciden, iniciar sesión y redirigir al usuario a la página de ventas.
             $_SESSION["user_id"] = $row['USUNAME'];
-            header("Location: ventas.php");
+            header("Location: index.html");
             exit;
         } else {
             // Si las contraseñas no coinciden, mostrar un mensaje de error.
