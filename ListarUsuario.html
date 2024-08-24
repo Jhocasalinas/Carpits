@@ -49,9 +49,13 @@
                                 <span class="ms-1 d-none d-sm-inline">Agendar
                                     vehiculo</span>
                             </a></li>
-                        <li><a href="Informes.html" class="d-block text-body p-3 border-0"> <i
+                        <li><a href="InformeUsuario.html" class="d-block text-body p-3 border-0"> <i
                                     class="icon ion-md-list mr-2"></i>
-                                <span class="ms-1 d-none d-sm-inline">Informe</span>
+                                <span class="ms-1 d-none d-sm-inline">Informe Usuario</span>
+                            </a></li>
+                        <li><a href="Informegeneral.html" class="d-block text-body p-3 border-0"> <i
+                                    class="icon ion-md-list mr-2"></i>
+                                <span class="ms-1 d-none d-sm-inline">Informe General</span>
                             </a></li>
                         <li><a href="CrearUsuario.html" class="d-block text-body p-3 border-0"> <i
                                     class="ion ion-md-people"></i>
@@ -72,61 +76,28 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <div id="userList_wrapper" class="dataTables_wrapper no-footer">
-                                <table id="userList"
+                                <table id="userList" action
                                     class="table table-bordered table-hover table-striped dataTable no-footer"
                                     aria-describedby="userList_info">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col" class="sorting sorting_asc" tabindex="0"
-                                                aria-controls="userList" rowspan="1" colspan="1" aria-sort="ascending"
-                                                aria-label="#: activate to sort column descending"
-                                                style="width: 9.48438px;">#</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Nombre: activate to sort column ascending"
-                                                style="width: 80.0469px;">Tipo de documento</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Apellido: activate to sort column ascending"
-                                                style="width: 105.016px;">Numero de docuemnto</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Usuario: activate to sort column ascending"
-                                                style="width: 105.016px;">Primer nombre</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Pais: activate to sort column ascending"
-                                                style="width: 105.016px;">Segundo nombre</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Ciudad: activate to sort column ascending"
-                                                style="width: 105.016px;">Primer apellido</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Email: activate to sort column ascending"
-                                                style="width: 105.016px;">Segundo apellido</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Rol: activate to sort column ascending"
-                                                style="width: 60.984px;">Cargo</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Rol: activate to sort column ascending"
-                                                style="width: 105.016px;">Correo</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Rol: activate to sort column ascending"
-                                                style="width: 105.016px;">Telefono</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Rol: activate to sort column ascending"
-                                                style="width: 80.984px;">Nombre de usuario</th>
-                                            <th scope="col" class="sorting" tabindex="0" aria-controls="userList"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Rol: activate to sort column ascending"
-                                                style="width: 80.984px;">Rol</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Tipo de documento</th>
+                                            <th scope="col">Número de documento</th>
+                                            <th scope="col">Primer nombre</th>
+                                            <th scope="col">Segundo nombre</th>
+                                            <th scope="col">Primer apellido</th>
+                                            <th scope="col">Segundo apellido</th>
+                                            <th scope="col">Cargo</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Teléfono</th>
+                                            <th scope="col">Nombre de usuario</th>
+                                            <th scope="col">Rol</th>
                                         </tr>
                                     </thead>
+                                    <tbody id="userData">
+
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -135,6 +106,46 @@
             </div>
         </div>
     </div>
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                url: 'Funciones/Listarusuarios.php', // El archivo PHP que consulta la base de datos
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    let tableBody = $('#userData');
+                    tableBody.empty(); // Limpiar cualquier dato existente
+
+                    $.each(data, function (index, user) {
+                        tableBody.append(
+                            `<tr>
+                                <td>${user.OID}</td>
+                                <td>${user.TIPCODOCUMENTO}</td>
+                                <td>${user.NUMDOC}</td>
+                                <td>${user.PRIMNOM}</td>
+                                <td>${user.SEGNOM}</td>
+                                <td>${user.PRIAPEL}</td>
+                                <td>${user.SEGAPEL}</td>
+                                <td>${user.CARGO}</td>
+                                <td>${user.CORREO}</td>
+                                <td>${user.NUMTELEF}</td>
+                                <td>${user.USURNAME}</td>
+                                <td>${user.USUROL}</td>
+                            </tr>`
+                        );
+                    });
+
+                    // Inicializar DataTables
+                    $('#userList').DataTable();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error al cargar los datos: ', error);
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

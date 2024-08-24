@@ -29,7 +29,7 @@
                <img src="images/Logo3.jfif" width="150" alt="">
             </ul>
             <div class="col-lg-10 d-flex justify-content-end">
-                <a class="btn btn-secondary" href="Login.html">Cerrar Sesion</a>
+               <a class="btn btn-secondary" href="Login.html">Cerrar Sesion</a>
             </div>
          </div>
       </nav>
@@ -46,9 +46,13 @@
                         <span class="ms-1 d-none d-sm-inline">Agendar
                            vehiculo</span>
                      </a></li>
-                  <li><a href="Informes.html" class="d-block text-body p-3 border-0"> <i
+                  <li><a href="InformeUsuario.html" class="d-block text-body p-3 border-0"> <i
                            class="icon ion-md-list mr-2"></i>
-                        <span class="ms-1 d-none d-sm-inline">Informe</span>
+                        <span class="ms-1 d-none d-sm-inline">Informe Usuario</span>
+                     </a></li>
+                  <li><a href="Informegeneral.html" class="d-block text-body p-3 border-0"> <i
+                           class="icon ion-md-list mr-2"></i>
+                        <span class="ms-1 d-none d-sm-inline">Informe General</span>
                      </a></li>
                   <li><a href="CrearUsuario.html" class="d-block text-body p-3 border-0"> <i
                            class="ion ion-md-people"></i>
@@ -62,13 +66,13 @@
             </div>
          </div>
          <div class="col-sm-10">
-            <form action="Agendar.html" method="post" class="col-sm-8 row mx-auto ">
+            <form action="Funciones/agendar.php" method="post" class="col-sm-8 row mx-auto ">
                <p class="text-body text-center fs-1 fw-bold">Agendar vehiculo</p>
 
                <div class="col-md-6">
                   <label for="fecha_valoracion" class="col-form-label">Fecha
-                     de la tecnomecanica:</label> <input type="datetime-local" class="form-control" id="fechatecnomecanica"
-                     placeholder="Fecha de la valoracion" name="fechatecnomecanica" value="">
+                     de la tecnomecanica:</label> <input type="datetime-local" class="form-control"
+                     id="fechatecnomecanica" placeholder="Fecha de la valoracion" name="fechatecnomecanica" value="">
 
                </div>
                <div class="col-md-6">
@@ -92,9 +96,7 @@
                      class="form-control" id="Observaciones" placeholder="Observaciones" name="Observaciones" value="">
                </div>
                <div class="col-md-6 ">
-                  <a href="Agendar.html">
-                     <button type="button" class="btn btn-outline-secondary mt-3">Guardar</button>
-                  </a>
+                  <button type="submit" class="btn btn-outline-secondary mt-3">Guardar</button>
                </div>
             </form>
          </div>
