@@ -17,7 +17,6 @@ function login($usuario, $password, $con)
     $sql = $con->prepare("SELECT USUNAME, CONTRASEÑA FROM usuario WHERE usuario LIKE ? ");
     $sql->execute([$usuario]);
 
-<<<<<<< HEAD
     $stmt = $conn->prepare("SELECT OID, USURNAME, CONTRASEÑA, USUROL FROM usuario WHERE USURNAME = ?");
     $stmt->bind_param("s", $nombre_usuario);
     $stmt->execute();
@@ -32,14 +31,6 @@ function login($usuario, $password, $con)
             $_SESSION['usuario'] = $row['USURNAME'];
 
             header("Location: ../index.html"); 
-=======
-    if ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-        // Verificar si las contraseñas coinciden utilizando password_verify().
-        if (password_verify($password, $row['CONTRASEÑA'])) {
-            // Si las contraseñas coinciden, iniciar sesión y redirigir al usuario a la página de ventas.
-            $_SESSION["user_id"] = $row['USUNAME'];
-            header("Location: index.html");
->>>>>>> 84cacbc23eda006deb5fcab2c6241b0b60792656
             exit;
         } else {
             // Si las contraseñas no coinciden, mostrar un mensaje de error.
@@ -50,3 +41,13 @@ function login($usuario, $password, $con)
         return "El nombre de usuario es incorrecto o no está activo";
     }
 }
+
+
+if (isset($_SESSION['rol'])) {
+    echo json_encode(['rol' => $_SESSION['rol']]);
+} else {
+    echo json_encode(['rol' => '']);
+}
+
+$conn->close();
+?>
