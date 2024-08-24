@@ -3,30 +3,25 @@ require_once('../conexion.php');
 
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre_usuario = $_POST['UsuarioL'];
-    $password = $_POST['ContraseñaL'];
+function login($usuario, $password, $con)
+{
+    // Preparar consulta para seleccionar los datos del usuario administrador con el nombre de usuario especificado.
+    $sql = $con->prepare("SELECT USUNAME, CONTRASEÑA FROM usuario WHERE usuario LIKE ? ");
+    $sql->execute([$usuario]);
 
-    $stmt = $conn->prepare("SELECT USURNAME, CONTRASEÑA FROM usuario WHERE USURNAME = ?");
-    $stmt->bind_param("s", $nombre_usuario);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+        // Verificar si las contraseñas coinciden utilizando password_verify().
         if (password_verify($password, $row['CONTRASEÑA'])) {
-            $_SESSION['usuario'] = $row['USURNAME'];
-            header("Location: ../index.html"); 
+            // Si las contraseñas coinciden, iniciar sesión y redirigir al usuario a la página de ventas.
+            $_SESSION["user_id"] = $row['USUNAME'];
+            header("Location: ventas.php");
             exit;
         } else {
-            echo "Contraseña incorrecta.";
+            // Si las contraseñas no coinciden, mostrar un mensaje de error.
+            return "Contraseña incorrecta";
         }
     } else {
-        echo "El usuario no existe.";
+        // Si el usuario no existe en la base de datos, mostrar un mensaje de error.
+        return "El nombre de usuario es incorrecto o no está activo";
     }
-
-    $stmt->close();
 }
-
-$conn->close();
-?>
