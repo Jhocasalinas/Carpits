@@ -50,16 +50,3 @@ function login($usuario, $password, $con)
         return "El nombre de usuario es incorrecto o no está activo";
     }
 }
-<<<<<<< HEAD
-
-
-if (isset($_SESSION['rol'])) {
-    echo json_encode(['rol' => $_SESSION['rol']]);
-} else {
-    echo json_encode(['rol' => '']);
-}
-
-$conn->close();
-?>
-=======
->>>>>>> 84cacbc23eda006deb5fcab2c6241b0b60792656
