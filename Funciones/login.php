@@ -15,36 +15,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_usuario = $_POST['UsuarioL'];
     $password = $_POST['ContraseñaL'];
 
-    $stmt = $conn->prepare("SELECT OID, USURNAME, CONTRASEÑA, USUROL FROM usuario WHERE USURNAME = ?");
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE USURNAME = ?");
     $stmt->bind_param("s", $nombre_usuario);
     $stmt->execute();
     $result = $stmt->get_result();
 
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+        // Verificar si las contraseñas coinciden utilizando password_verify().
         if (password_verify($password, $row['CONTRASEÑA'])) {
-            $_SESSION['usuario_id'] = $row['OID']; // Almacena el ID del usuario
-            $_SESSION['rol'] = $row['USUROL']; // Asigna el rol del usuario desde la base de datos
             $_SESSION['usuario'] = $row['USURNAME'];
-
             header("Location: ../index.html"); 
             exit;
         } else {
-            echo "Contraseña incorrecta.";
+            // Si las contraseñas no coinciden, mostrar un mensaje de error.
+            return "Contraseña incorrecta";
         }
     } else {
-        echo "El usuario no existe.";
+        // Si el usuario no existe en la base de datos, mostrar un mensaje de error.
+        return "El nombre de usuario es incorrecto o no está activo";
     }
-
-    $stmt->close();
-}
-
-
-if (isset($_SESSION['rol'])) {
-    echo json_encode(['rol' => $_SESSION['rol']]);
-} else {
-    echo json_encode(['rol' => '']);
 }
 
 $conn->close();
