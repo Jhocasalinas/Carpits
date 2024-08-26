@@ -62,7 +62,7 @@ if ($result_check->num_rows > 0) {
 
     $stmt_check->close();
 } else {
-    $sql_insert = "INSERT INTO agendamiento (PLACA, FECHAAGENDAMIENTO, TIPOVEHICULO, OBSEVACION, USUAGENDA) 
+    $sql_insert = "INSERT INTO agendamiento (PLACA, FECHAAGENDAMIENTO, TIPOVEHICULO, OBSERVACION, USUAGENDA) 
             VALUES (?, ?, ?, ?, ?)";
 
     $stmt_insert = $conn->prepare($sql_insert);
@@ -84,4 +84,6 @@ if ($result_check->num_rows > 0) {
 }
 
 $conn->close();
+
+
 ?>

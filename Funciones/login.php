@@ -4,18 +4,9 @@ require_once('../conexion.php');
 session_start();
 header('Content-Type: application/json');
 
-function getUserRole() {
-    if (isset($_SESSION['rol'])) {
-        return $_SESSION['rol'];
-    }
-    return '';
-}
-
-function login($usuario, $password, $con)
-{
-    // Preparar consulta para seleccionar los datos del usuario administrador con el nombre de usuario especificado.
-    $sql = $con->prepare("SELECT USUNAME, CONTRASEÑA FROM usuario WHERE usuario LIKE ? ");
-    $sql->execute([$usuario]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre_usuario = $_POST['UsuarioL'];
+    $password = $_POST['ContraseñaL'];
 
     $stmt = $conn->prepare("SELECT OID, USURNAME, CONTRASEÑA, USUROL FROM usuario WHERE USURNAME = ?");
     $stmt->bind_param("s", $nombre_usuario);
@@ -33,21 +24,13 @@ function login($usuario, $password, $con)
             header("Location: ../index.html"); 
             exit;
         } else {
-            // Si las contraseñas no coinciden, mostrar un mensaje de error.
-            return "Contraseña incorrecta";
+            echo "Contraseña incorrecta.";
         }
     } else {
-        // Si el usuario no existe en la base de datos, mostrar un mensaje de error.
-        return "El nombre de usuario es incorrecto o no está activo";
+        echo "El usuario no existe.";
     }
+
+    $stmt->close();
 }
 
-
-if (isset($_SESSION['rol'])) {
-    echo json_encode(['rol' => $_SESSION['rol']]);
-} else {
-    echo json_encode(['rol' => '']);
-}
-
-$conn->close();
 ?>
